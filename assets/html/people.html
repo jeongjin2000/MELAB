@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+    <!--  CSS  -->
+    <link rel="stylesheet" href="/assets/css/output.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <!--  HEADER  -->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a class="flex flex-row justify-between items-center nav__item" href="/index.html">
+          <img src="/assets/icons/lab_icon.svg" alt="meta" class="lab__icon" />
+          <div class="lab__name font-sans not-italic text-base">Meta Earth Lab</div>
+        </a>
+        <!-- NAVIGATION MENU -->
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list grid">
+            <li class="nav__item">
+              <a
+                href="/index.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-estate nav__icon font-bold"></i> Home
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="/assets/html/news.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-file nav__icon"></i> News
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="/assets/html/people.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-black "
+              >
+                <i class="uil uil-users-alt nav__icon"></i> People
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="/assets/html/publications.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-file nav__icon"></i> Publications
+              </a>
+            </li>
+            <li class="nav__item" id="hiddon__nav__item">
+              <a
+                href="/assets/html/calendar.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-graduation-cap nav__icon"></i> Calendar
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="/assets/html/contacts.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-info-circle nav__icon"></i> Contact
+              </a>
+            </li>
+          </ul>
+          <i class="uil uil-times nav__close" id="nav-close"></i>
+        </div>
+        <div
+          id="g_id_onload"
+          data-client_id="491332813796-amd3pg9jlr09rj1s4sicnduh4cna8a91.apps.googleusercontent.com"
+          data-auto_prompt="false"
+          data-callback="handleCredentialResponse"
+        ></div>
+        <div class="g_id_signout" id="signout_button">Sign Out</div>
+        <div
+          id="signin_button"
+          class="g_id_signin"
+          data-type="standard"
+          data-size="medium"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-shape="pill"
+          data-logo_alignment="left"
+        ></div>
+      </nav>
+    </header>
+
+    <!--  MAIN  -->
+    <main class="main flex flex-col items-center" style="margin-top: 128px; margin-bottom: 128px;">
+      <!--  PEOPLE  -->
+      <section
+        class="home people w-100 flex flex-row text-black"
+        id="people"
+        style="width: 100%; gap: 24px;"
+      >
+        <div
+          class="people__container flex flex-col overflow-x-auto no-scrollbar"
+          id="people__container"
+          style="gap: 24px; width: 264px;"
+        >
+          <!-- <div class="nav__item" style="width: auto; display: flex; flex-direction: column; gap: 0px; user-select: none; cursor: pointer;">
+            <div class="text-base">Hyunjun Kim</div>
+            <div class="text-xs">professor</div>
+          </div> -->
+        </div>
+
+        <div id="details"></div>
+
+        <!-- <div class="flex flex-col">
+          <img style="width: 168px; aspect-ratio: 3 / 4;">
+        </div> -->
+        
+        <!-- <div class="details flex flex-col" style="width: 100%; flex: 1; gap: 52px;">
+          <div style="width: auto; display: flex; flex-direction: column; gap: 4px; user-select: none; cursor: pointer;">
+            <div class="text-xl font-semibold">Hyunjun Kim</div>
+            <div class="text-base">professor</div>
+          </div>
+
+          <div class="contact flex flex-col" style="width: 100%; gap: 8px;">
+            <div class="font-semibold text-sm">Contact</div>
+            <div class="contact flex flex-col" style="width: 100%; gap: 4px;">
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">tel</div>
+                <div class="text-sm" style="">000-0000-0000</div>
+              </div>
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">email</div>
+                <div class="text-sm" style="">aaa@aaaaa.com</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="Education flex flex-col" style="width: 100%; gap: 8px;">
+            <div class="font-semibold text-sm">Education</div>
+            <div class="contact flex flex-col" style="width: 100%; gap: 4px;">
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">2010</div>
+                <div class="text-sm" style="">동경대학교 사회기반학과 박사</div>
+              </div>
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">2010</div>
+                <div class="text-sm" style="">동경대학교 사회기반학과 박사</div>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="Career flex flex-col" style="width: 100%; gap: 8px;">
+            <div class="font-semibold text-sm">Career</div>
+            <div class="contact flex flex-col" style="width: 100%; gap: 4px;">
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">2012-2021</div>
+                <div class="text-sm" style="">일본 동경대학교 사회기반학과/생산기술연구소 조교수/부교수</div>
+              </div>
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">2012-2021</div>
+                <div class="text-sm" style="">일본 동경대학교 사회기반학과/생산기술연구소 조교수/부교수</div>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="Award flex flex-col" style="width: 100%; gap: 8px;">
+            <div class="font-semibold text-sm">Award</div>
+            <div class="contact flex flex-col" style="width: 100%; gap: 4px;">
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">2021</div>
+                <div class="text-sm" style="">한국과학기술원 인문사회융합과학대학 연구혁신 우수상</div>
+              </div>
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">2021</div>
+                <div class="text-sm" style="">한국과학기술원 인문사회융합과학대학 연구혁신 우수상</div>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="Project flex flex-col" style="width: 100%; gap: 8px;">
+            <div class="font-semibold text-sm">Project</div>
+            <div class="contact flex flex-col" style="width: 100%; gap: 4px;">
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">2021-2030</div>
+                <div class="text-sm" style="">한국연구재단 해외우수과학자유치사업Plus 사업 “적응형 미래전략 수립을 위한 빅데이터-물리모델 융합 프레임워크의 개발”</div>
+              </div>
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px; flex-shrink: 0;">2021-2030</div>
+                <div class="text-sm" style="">한국연구재단 해외우수과학자유치사업Plus 사업 “적응형 미래전략 수립을 위한 빅데이터-물리모델 융합 프레임워크의 개발”</div>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="Paper flex flex-col" style="width: 100%; gap: 8px;">
+            <div class="font-semibold text-sm">Paper</div>
+            <div class="contact flex flex-col" style="width: 100%; gap: 4px;">
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px;">2022</div>
+                <div class="text-sm" style="">The timing of unprecedented hydrological drought under climate change, Nature Communications</div>
+              </div>
+              <div class="flex flex-row" style="gap: 24px;">
+                <div class="text-sm" style="width: 72px;">2022</div>
+                <div class="text-sm" style="">The timing of unprecedented hydrological drought under climate change, Nature Communications</div>
+              </div>
+            </div>
+            
+          </div>
+        </div> -->
+      </section>
+    </main>
+    <!--  FOOTER  -->
+    <footer class="footer">
+      <div class="footer__bg">
+        <p class="footer__copy">&#169; Meta Earth Lab. All rights reserved</p>
+      </div>
+    </footer>
+    <!--  MAIN JS  -->
+    <script src="/assets/js/people.js"></script>
+  </body>
+</html>

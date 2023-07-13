@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+    <!--  UNICONS  -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--  CSS  -->
+    <link rel="stylesheet" href="assets/css/output.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
+
+    <script>
+      // window.addEventListener("wheel", function(e){
+      //   e.preventDefault();
+      // },{passive : false});
+
+      var page = 2;
+
+      var scroll_buffer = 0;
+      const sec2_scroll_buffer_max = 5000;
+
+      var scroll_ended = true;
+
+      window.addEventListener("wheel", function(e) {
+        if(scroll_ended != true) return;
+        if(e.deltaY > 0) {
+          if(page == 2){
+            if(scroll_buffer < sec2_scroll_buffer_max){
+              scroll_buffer += e.deltaY;
+              console.log(scroll_buffer);
+              changeImage(scroll_buffer, sec2_scroll_buffer_max);
+              return;
+            }
+          }
+          if(page == 4){
+            window.scrollTo({
+              top: window.scrollY + e.deltaY,
+              left: 0,
+              behavior: "smooth",
+            });
+            return;
+          }
+          page++;
+          if(page == 2) {
+            scroll_buffer = 0;
+            changeImage(0, sec2_scroll_buffer_max);
+          }
+        } else if(e.deltaY < 0) {
+          if(page == 1) return;
+          if(page == 2){
+            if(scroll_buffer > 0){
+              scroll_buffer += e.deltaY;
+              // console.log(scroll_buffer);
+              changeImage(scroll_buffer, sec2_scroll_buffer_max);
+              return;
+            }
+          }
+          if(page == 4){
+            if(window.scrollY + e.deltaY > (page - 1) * window.innerHeight){
+              window.scrollTo({
+                top: window.scrollY + e.deltaY,
+                left: 0,
+                behavior: "smooth",
+              });
+              return;
+            }
+          }
+          page--;
+          if(page == 2) {
+            scroll_buffer = sec2_scroll_buffer_max;
+            changeImage(sec2_scroll_buffer_max, sec2_scroll_buffer_max);
+          }
+        }
+        currentPage(page);
+      })
+
+      window.onload = function(){ 
+        page = 2;
+        window.scrollTo({
+          top: (page - 1) * window.innerHeight,
+          left: 0,
+          behavior: "instant",
+        });
+
+        for(let i=1; i<=251; i++){
+          earth_image_storage[i] = new Image();
+          earth_image_storage[i].src = "./data/home/introduction/introductionimages/earth_animation/" + i.toString().padStart(4, '0') + ".png";
+        }
+
+        changeImage(0, sec2_scroll_buffer_max);
+      }
+      // window.onscroll = function() { 
+      //   // changeHeader()
+      //   changeImage() 
+      // }
+
+      function currentPage(idx) {
+        page = idx;
+        window.scrollTo({
+          top: (page - 1) * window.innerHeight,
+          left: 0,
+          behavior: "smooth",
+        });
+        scroll_ended = false;
+        addEventListener("scrollend", () => {
+          scroll_ended = true;
+        });
+        // console.log(page);
+        // console.log(window.scrollY);
+
+        if(idx == 1){
+          if(document.getElementById("latest_news").classList.contains('text-gray-400')){
+            document.getElementById("latest_news").classList.remove('text-gray-400');
+            document.getElementById("latest_news").classList.add('text-white');
+          }
+          if(document.getElementById("introduction").classList.contains('text-white')){
+            document.getElementById("introduction").classList.remove('text-white');
+            document.getElementById("introduction").classList.add('text-gray-400');
+          }
+          if(document.getElementById("public_work").classList.contains('text-white')){
+            document.getElementById("public_work").classList.remove('text-white');
+            document.getElementById("public_work").classList.add('text-gray-400');
+          }
+        }
+        else if(idx == 2 || idx == 3){
+          if(document.getElementById("introduction").classList.contains('text-gray-400')){
+            document.getElementById("introduction").classList.remove('text-gray-400');
+            document.getElementById("introduction").classList.add('text-white');
+          }
+          if(document.getElementById("latest_news").classList.contains('text-white')){
+            document.getElementById("latest_news").classList.remove('text-white');
+            document.getElementById("latest_news").classList.add('text-gray-400');
+          }
+          if(document.getElementById("public_work").classList.contains('text-white')){
+            document.getElementById("public_work").classList.remove('text-white');
+            document.getElementById("public_work").classList.add('text-gray-400');
+          }
+        }
+        else if(idx == 4){
+          if(document.getElementById("public_work").classList.contains('text-gray-400')){
+            document.getElementById("public_work").classList.remove('text-gray-400');
+            document.getElementById("public_work").classList.add('text-white');
+          }
+          if(document.getElementById("latest_news").classList.contains('text-white')){
+            document.getElementById("latest_news").classList.remove('text-white');
+            document.getElementById("latest_news").classList.add('text-gray-400');
+          }
+          if(document.getElementById("introduction").classList.contains('text-white')){
+            document.getElementById("introduction").classList.remove('text-white');
+            document.getElementById("introduction").classList.add('text-gray-400');
+          }
+        }
+      }
+
+      var earth_year = 1;
+      var earth_image_storage = [];
+
+      function changeImage(idx, idx_max) {
+        imsi = parseInt(1 + 250 * (idx / idx_max));
+        if(imsi < 1) imsi = 1;
+        if(imsi > 251) imsi = 251;
+        if(imsi > earth_year){
+          for(let i=earth_year; i <= imsi; i++){
+            document.getElementById("earth").src = earth_image_storage[i].src;
+            if(i <= 151 + 15) document.getElementById('earth_date').innerHTML = "Historical, A.D. " + (1849 + i)
+            else document.getElementById('earth_date').innerHTML = "SSP585, A.D. " + (1849 + i)
+          }
+        } else {
+          for(let i=earth_year; i >= imsi; i--){
+            document.getElementById("earth").src = earth_image_storage[i].src;
+            if(i <= 151 + 15) document.getElementById('earth_date').innerHTML = "Historical, A.D. " + (1849 + i)
+            else document.getElementById('earth_date').innerHTML = "SSP585, A.D. " + (1849 + i)
+          }
+        }
+        earth_year = imsi;
+      }
+    </script>
+
+    <title>Meta Earth Lab</title>
+  </head>
+  <body style="background-color: transparent; overflow: hidden;">
+    
+    <!--  HEADER  -->
+    <header class="header" id="header" style="background: rgba(0,0,0,0.3);">
+      <nav class="nav container">
+        <a class="flex flex-row justify-between items-center nav__item" href="/index.html">
+          <img src="/assets/icons/lab_icon.svg" alt="meta" class="lab__icon" />
+          <div class="lab__name font-sans not-italic text-base" style="color: white;">Meta Earth Lab</div>
+        </a>
+        <!-- NAVIGATION MENU -->
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list grid">
+            <li class="nav__item">
+              <a
+                href="/index.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-white"
+              >
+                <i class="uil uil-estate nav__icon font-bold"></i> Home
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="assets/html/news.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-400"
+              >
+                <i class="uil uil-file nav__icon"></i> News
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="assets/html/people.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-400"
+              >
+                <i class="uil uil-users-alt nav__icon"></i> People
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="assets/html/publications.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-400"
+              >
+                <i class="uil uil-file nav__icon"></i> Publications
+              </a>
+            </li>
+            <li class="nav__item" id="hiddon__nav__item">
+              <a
+                href="assets/html/calendar.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-400"
+              >
+                <i class="uil uil-graduation-cap nav__icon"></i> Calendar
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="assets/html/contacts.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-400"
+              >
+                <i class="uil uil-info-circle nav__icon"></i> Contact
+              </a>
+            </li>
+          </ul>
+          <i class="uil uil-times nav__close" id="nav-close"></i>
+        </div>
+        <div
+          id="g_id_onload"
+          data-client_id="491332813796-amd3pg9jlr09rj1s4sicnduh4cna8a91.apps.googleusercontent.com"
+          data-auto_prompt="false"
+          data-callback="handleCredentialResponse"
+        ></div>
+        <div class="g_id_signout" id="signout_button">Sign Out</div>
+        <div
+          id="signin_button"
+          class="g_id_signin"
+          data-type="standard"
+          data-size="medium"
+          data-theme="filled_black"
+          data-text="sign_in_with"
+          data-shape="pill"
+          data-logo_alignment="left"
+        ></div>
+      </nav>
+    </header>
+
+    <!--  MAIN  -->
+    <main class="main flex justify-center flex-col items-center" style="margin-top: 0; z-index: -1;">
+      <div style="width: 100vw; height: 100vh; display: flex; align-items: center; flex-direction: column;" id="section1">
+        <!--  IMAGE SLIDER  -->
+        <div class="home slideshow__container" style="background-color: white; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 12px;" id="slideshow__container">
+          <!-- <div class="slideshow_bottom" style="background: rgba(0,0,0,0.3); border-radius: 0 0 12px 12px;">
+            <div class="slideshow_info">
+              <div class="slides__title">title</div>
+              <div class="slides__subtitle">news caption</div>
+            </div>
+            <div class="slideshow_picker">
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      
+      <div style="width: 100vw; height: 100vh; display: flex; align-items: center; flex-direction: column;" id="section2">
+        <section class="home home__one flex flex-row justify-center w-full items-center" style="margin: auto;">
+          <div class="flex flex-col justify-center items-center w-full">
+            <img
+                id = "earth";
+                src="./data/home/introduction/introductionimages/earth_animation/0001.png"
+                alt="space"
+                class="object-contain w-fit"
+                style="min-width: 256px; max-width: 80%; object-fit: cover; filter: drop-shadow(0px -12px 12px rgba(0,0,0,0.05))"
+              />
+          </div>
+          <div class="w-full pl-10">
+            <div
+              class="font-sans font-medium flex items-center text-2xl text-base text-white"
+            >
+              Human life is changing Earth System
+            </div>
+            <div class="font-sans font-medium text-base text-gray-300">
+              *surface temperature of Earth from 1850 to 2100
+            </div>
+            <div
+              id = "earth_date"
+              class="flex items-end text-center font-semibold text-base text-white pt-4"
+            >
+              Historical, AD 1850
+            </div>
+          </div>
+        </section>
+      </div>
+      <div style="width: 100vw; height: 100vh; display: flex; align-items: center; flex-direction: column;" id="section3">
+        <section class="home home__two flex flex-col justify-center w-full items-center" style="margin: auto;">
+          <div class="upper__text w-full pb-8">
+            <div class="font-sans font-medium text-white text-2xl">
+              We study future of Earth and Us
+            </div>
+            <div class="font-sans font-medium text-white text-base">
+              from how human life is changing/would change the climate
+            </div>
+          </div>
+          <div
+            class="image__container flex flex-row w-full items-center justify-between pb-8"
+          >
+            <div class="image__container_1 flex flex-row">
+              <img
+                src="/data/home/introduction/introductionimages/water.png"
+                alt="water"
+              >
+              <img
+                src="/data/home/introduction/introductionimages/factory.png"
+                alt="factory"
+              />
+            </div>
+            <div class="image__container_2 flex flex-row">
+              <img
+                src="/data/home/introduction/introductionimages/tornado.png"
+                alt="tornado"
+              />
+              <img
+                src="/data/home/introduction/introductionimages/forest fire.png"
+                alt="forest fire"
+              />
+            </div>
+            <div class="image__container_3 flex flex-row">
+              <img
+                src="/data/home/introduction/introductionimages/starvation.png"
+                alt="starvation"
+              />
+              <img
+                src="/data/home/introduction/introductionimages/rain.png"
+                alt="rain"
+              />
+            </div>
+          </div>
+          <div class="lower__text w-full flex justify-end">
+            <div class="font-sans font-medium text-white text-base">
+              to how that climate would change human life again
+            </div>
+          </div>
+        </section>
+      </div>
+      <div style="width: 100vw; min-height: 100vh; display: flex; align-items: center; flex-direction: column;" id="section4">
+        <section class="home home__three flex flex-col justify-center w-full items-center" style="margin-top: calc(100vh / 2 - 332px / 2); margin-bottom: 72px;">
+          <div
+            class="upper__text flex flex-col justify-center items-center mb-8"
+          >
+            <div class="font-medium text-2xl text-white">
+              Until our work reach the public
+            </div>
+            <div class="font-medium text-base text-white">
+              we want our study to be over just a knowledge
+            </div>
+          </div>
+          <div class="w-full flex flex-row">
+            <div class="left__box h-full pr-3 w-1/2">
+              <div
+                class="image__container w-full h-52" style="background-color: gray; background-image: url('/data/home/introduction/introductionimages/direction.jpg'); background-size: cover; background-position-y: -96px;"
+              ></div>
+              <div class="text-center font-medium text-base text-white mt-3">
+                guidance for climate change response and adaptation
+              </div>
+            </div>
+            <div class="right__box h-full pl-3 w-1/2">
+              <div
+                class="image__container w-full h-52" style="background-color: gray; background-image: url('/data/home/introduction/introductionimages/tools.jpg'); background-size: cover;"
+              ></div>
+              <div class="text-center font-medium text-base text-white mt-3">
+                materials for people and government to think about
+              </div>
+            </div>
+          </div>
+          <!-- <div class="w-full" style="margin-top: 72px; display: flex; flex-direction: column; gap: 24px;">
+            <div class="w-full" style="display: flex; flex-direction: row; gap: 24px;">
+              <div class="w-full" style="aspect-ratio: 1 / 1; background-color: gray;"></div>
+              <div class="w-full" style="aspect-ratio: 1 / 1; background-color: gray;"></div>
+              <div class="w-full" style="aspect-ratio: 1 / 1; background-color: gray;"></div>
+              <div class="w-full" style="aspect-ratio: 1 / 1; background-color: gray;"></div>
+            </div>
+            <div class="w-full" style="display: flex; flex-direction: row; gap: 24px;">
+              <div class="w-full" style="aspect-ratio: 1 / 1; background-color: gray;"></div>
+              <div class="w-full" style="aspect-ratio: 1 / 1; background-color: gray;"></div>
+              <div class="w-full" style="aspect-ratio: 1 / 1; background-color: gray;"></div>
+              <div class="w-full" style="aspect-ratio: 1 / 1; background-color: gray;"></div>
+            </div>
+          </div> -->
+        </section>
+      </div>
+    </main>
+
+    <!--  FOOTER  -->
+    <footer class="footer" style="position: fixed; background: rgba(0,0,0,0.3);">
+      <div class="footer__bg" style="background-color: transparent;">
+        <p class="footer__copy">&#169; Meta Earth Lab. All rights reserved</p>
+      </div>
+    </footer>
+
+    <!-- indicator -->
+    <div style="display: flex; justify-content: center; flex-direction: column; position: fixed; background-color: rgba(255, 255, 255, 0.2); top: 50%; right: 32px; gap: 12px; padding: 12px; border-radius: 8px; translate: 0 -50%;">
+      <div id="latest_news" class="text-sm font-semibold text-gray-400 nav__item" style="text-align: center; user-select: none; cursor: pointer;" onclick="currentPage(1)">NEWS</div>
+      <div style="height: 1px; border-bottom: solid 1px rgba(255, 255, 255, 0.2);"></div>
+      <div id="introduction" class="text-sm font-semibold text-white nav__item" style="text-align: center; user-select: none; cursor: pointer;" onclick="currentPage(2)">INTRO</div>
+      <div style="height: 1px; border-bottom: solid 1px rgba(255, 255, 255, 0.2);"></div>
+      <div id="public_work" class="text-sm font-semibold text-gray-400 nav__item" style="text-align: center; user-select: none; cursor: pointer;" onclick="currentPage(4)">WORK</div>
+    </div>
+
+    <!-- background -->
+    <div style="top: 0; height: 100vh; width: 100vw; position: fixed; background-image: url('./data/home/introduction/introductionimages/earth_bg3.jpg'); background-size: cover; z-index: -1;"></div>
+
+    <!--  GOOGLE AUTH  -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!--  MAIN JS  -->
+    <script src="/assets/js/main.js"></script>
+    <!--  HOME JS  -->
+    <script src="/assets/js/home.js"></script>
+  </body>
+</html>

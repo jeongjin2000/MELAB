@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> -->
+    <!-- ############### UNICONS ############ -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+
+    <!-- ################# CSS ############### -->
+    <link rel="stylesheet" href="/assets/css/output.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--  HEADER  -->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a class="flex flex-row justify-between items-center nav__item" href="/index.html">
+          <img src="/assets/icons/lab_icon.svg" alt="meta" class="lab__icon" />
+          <div class="lab__name font-sans not-italic text-base">Meta Earth Lab</div>
+        </a>
+        <!-- NAVIGATION MENU -->
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list grid">
+            <li class="nav__item">
+              <a
+                href="/index.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-estate nav__icon font-bold"></i> Home
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="/assets/html/news.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-file nav__icon"></i> News
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="/assets/html/people.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-users-alt nav__icon"></i> People
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="/assets/html/publications.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-file nav__icon"></i> Publications
+              </a>
+            </li>
+            <li class="nav__item" id="hiddon__nav__item">
+              <a
+                href="/assets/html/calendar.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 "
+              >
+                <i class="uil uil-graduation-cap nav__icon"></i> Calendar
+              </a>
+            </li>
+            <li class="nav__item">
+              <a
+                href="/assets/html/contacts.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-black "
+              >
+                <i class="uil uil-info-circle nav__icon"></i> Contact
+              </a>
+            </li>
+          </ul>
+          <i class="uil uil-times nav__close" id="nav-close"></i>
+        </div>
+        <div
+          id="g_id_onload"
+          data-client_id="491332813796-amd3pg9jlr09rj1s4sicnduh4cna8a91.apps.googleusercontent.com"
+          data-auto_prompt="false"
+          data-callback="handleCredentialResponse"
+        ></div>
+        <div class="g_id_signout" id="signout_button">Sign Out</div>
+        <div
+          id="signin_button"
+          class="g_id_signin"
+          data-type="standard"
+          data-size="medium"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-shape="pill"
+          data-logo_alignment="left"
+        ></div>
+      </nav>
+    </header>
+
+    <!--  MAIN  -->
+    <main class="main flex justify-center flex-col items-center">
+      <!--  CONTACTS  -->
+      <section
+        class="home contacts w-3/4 flex justify-around items-center flex-col"
+        id="contacts"
+        style="gap: 72px;"
+      >
+        <div
+          class="contacts__container flex-initial w-full flex flex-col items-center"
+        >
+          <div class="email__box flex flex-row w-full">
+            <div
+              class="email__label text-right w-1/2 mr-8 font-semibold text-base text-black"
+            >
+              email
+            </div>
+            <div
+              class="email__text text-left w-1/2 text-black text-base font-normal"
+            >
+              hk.kaist@gmail.com
+            </div>
+          </div>
+          <div class="phone__box flex flex-row w-full">
+            <div
+              class="phone__label text-right w-1/2 mr-8 font-semibold text-base text-black"
+            >
+              call
+            </div>
+            <div
+              class="phone__text text-left w-1/2 text-black text-base font-normal"
+            >
+              042-350-4036
+            </div>
+          </div>
+        </div>
+        <hr style="width:100%">
+        <div class="maps__container flex flex-row" style="width: 100%; justify-content: space-between; gap: 24px;">
+          <div class="map__one-box" style="width: 100%; aspect-ratio: 3/2;">
+            <div class="map__one-details flex flex-row justify-between items-center" style="margin-bottom: 19px;">
+              <div class="map__one-city text-2xl text-black font-semibold">
+                Daejeon
+              </div>
+              <div
+                class="map__address-container text-right font-normal text-xs text-black"
+              >
+                <div class="map__one-address1">
+                  400 Guseong-dong, Yuseong-gu, Daejeon
+                </div>
+                <div class="map__one-address2">
+                  Basic Experiment RESEARCH B/D, N5 Building, KAIST
+                </div>
+              </div>
+            </div>
+            <div class="map__api" style="width: 100%; height: 100%">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1866.7745798011285!2d127.36211399747879!3d36.37351605262929!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35654bca45175ce3%3A0xb89a3db6416dea2c!2sBasic%20Experiment%20RESEARCH%20B%2FD%20%2CN5%20Building%2C%20KAIST!5e0!3m2!1sen!2skr!4v1676955718501!5m2!1sen!2skr"
+                width="100%"
+                height="100%"
+                style="border-radius: 4px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+          <div class="map__two-box" style="width: 100%; aspect-ratio: 3/2;">
+            <div class="map__two-details flex flex-row justify-between items-center" style="margin-bottom: 19px;">
+              <div class="map__two-city text-2xl text-black font-semibold">
+                Seoul
+              </div>
+              <div
+                class="map__address-container text-right font-normal text-xs text-black"
+              >
+                <div class="map__two-address1">
+                  400 Guseong-dong, Yuseong-gu, Daejeon
+                </div>
+                <div class="map__two-address2">
+                  Basic Experiment RESEARCH B/D, N5 Building, KAIST
+                </div>
+              </div>
+            </div>
+            <div class="map__api" style="width: 100%; height: 100%">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1866.7745798011285!2d127.36211399747879!3d36.37351605262929!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35654bca45175ce3%3A0xb89a3db6416dea2c!2sBasic%20Experiment%20RESEARCH%20B%2FD%20%2CN5%20Building%2C%20KAIST!5e0!3m2!1sen!2skr!4v1676955718501!5m2!1sen!2skr"
+                width="100%"
+                height="100%"
+                style="border-radius: 4px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!--  FOOTER  -->
+    <footer class="footer">
+      <div class="footer__bg">
+        <p class="footer__copy">&#169; Meta Earth Lab. All rights reserved</p>
+      </div>
+    </footer>
+    <!-- ############## MAIN JS ############ -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/public-google-sheets-parser@latest"></script> -->
+    <!-- <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzkBA6kN24RIHtiHuK6V3oWk8IyiW0O9Y&callback=initMap&v=weekly"
+      defer
+    ></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/public-google-sheets-parser@latest"></script> -->
+    <script src="../js/contacts.js" type="text/javascript"></script>
+  </body>
+</html>

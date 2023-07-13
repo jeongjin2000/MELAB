@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/output.css" />
+
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!--  HEADER  -->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a class="flex flex-row justify-between items-center nav__item" href="/index.html">
+          <img src="/assets/icons/lab_icon.svg" alt="meta" class="lab__icon" />
+          <div class="lab__name font-sans not-italic text-base">Meta Earth Lab</div>
+        </a>
+        <!-- NAVIGATION MENU -->
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list grid">
+            <li class="nav__item">
+              <a href="/index.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 ">
+                <i class="uil uil-estate nav__icon font-bold"></i> Home
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="/assets/html/news.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-black ">
+                <i class="uil uil-file nav__icon"></i> News
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="/assets/html/people.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 ">
+                <i class="uil uil-users-alt nav__icon"></i> People
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="/assets/html/publications.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 ">
+                <i class="uil uil-file nav__icon"></i> Publications
+              </a>
+            </li>
+            <li class="nav__item" id="hiddon__nav__item">
+              <a href="/assets/html/calendar.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 ">
+                <i class="uil uil-graduation-cap nav__icon"></i> Calendar
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="/assets/html/contacts.html"
+                class="nav__link flex flex-col font-sans not-italic font-medium text-base items-center text-gray-300 ">
+                <i class="uil uil-info-circle nav__icon"></i> Contact
+              </a>
+            </li>
+          </ul>
+          <i class="uil uil-times nav__close" id="nav-close"></i>
+        </div>
+        <div
+          id="g_id_onload"
+          data-client_id="491332813796-amd3pg9jlr09rj1s4sicnduh4cna8a91.apps.googleusercontent.com"
+          data-auto_prompt="false"
+          data-callback="handleCredentialResponse"
+        ></div>
+        <div class="g_id_signout" id="signout_button">Sign Out</div>
+        <div
+          id="signin_button"
+          class="g_id_signin"
+          data-type="standard"
+          data-size="medium"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-shape="pill"
+          data-logo_alignment="left"
+        ></div>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main flex justify-center flex-col items-center">
+      <!-- NEWS TABLE -->
+      <section class="home newstable w-3/4" id="newstable" style="margin: 64px;">
+        <div class="news__container grid grid-cols-3 gap-4" id="news__container">
+          <!-- <a href="https://kaist.ac.kr/kr/" class="" target="_blank">
+            <div class="news__box default_hover_box flex flex-col" style="border-radius: 4px 4px 4px 4px;">
+              <div class="img__container flex-initial" style="height: 200px; background-color: gray; border-radius: 4px 4px 0px 0px;"><img
+                  src="/data/home/previewimages/preview images form/image/0003061517_001_20221124162603400 - Khaknazar Mukash.jpg">
+              </div>
+              <div class="news__details flex-none p-3" style="height: 103px; justify-content: space-between;">
+                <div class="news__title text-black text-base font-semibold self-stretch">New members join our lab!</div>
+                <div class="news__content truncate font-normal text-black text-xs" style="height: 35px;">Two new master's students joining our
+                  lab from Spring 2023 Semester. [Name] graduated from NU and have worked for Google and Facebook
+                  before.................</div>
+                <div class="news__metadata text-right font-medium text-xs text-gray-300">KAIST, 2/20/2023</div>
+              </div>
+            </div>
+          </a> -->
+        </div>
+        <!-- Main modal -->
+        <div id="defaultModal" tabindex="-1" aria-hidden="true"
+          class="fixed top-0 left-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full flex items-center justify-center bg-gray-600 bg-opacity-80">
+          <div class="relative w-full h-full max-w-2xl md:h-auto">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <!-- Modal header -->
+              <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 id="modalTitle" class="text-xl font-semibold text-gray-900 dark:text-white"></h3>
+                <button type="button"
+                  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  data-modal-hide="defaultModal" id="modalCloseButton">
+                  <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="sr-only">Close modal</span>
+                </button>
+              </div>
+              <!-- Modal body -->
+              <div class="p-6 space-y-6">
+                <p id="modalTextOne" class="text-base leading-relaxed text-gray-500 dark:text-gray-400"></p>
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__bg">
+        <p class="footer__copy">&#169; Meta Earth Lab. All rights reserved</p>
+      </div>
+    </footer>
+
+    <script src="/assets/js/news.js"></script>
+  </body>
+
+</html>
